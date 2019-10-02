@@ -45,7 +45,7 @@
 						<item id="org_id">
 							<rank>20</rank>
 						</item>
-						<item id="location">
+						<item id="location_id">
 							<rank>30</rank>
 						</item>
 						<item id="testchildci_list">
@@ -61,7 +61,7 @@
 						<item id="org_id">
 							<rank>20</rank>
 						</item>
-						<item id="location">
+						<item id="location_id">
 							<rank>30</rank>
 						</item>
 					</items>
@@ -74,7 +74,7 @@
 						<item id="org_id">
 							<rank>20</rank>
 						</item>
-						<item id="location">
+						<item id="location_id">
 							<rank>30</rank>
 						</item>
 					</items>
@@ -127,7 +127,7 @@
 						<item id="org_id">
 							<rank>20</rank>
 						</item>
-						<item id="location">
+						<item id="location_id">
 							<rank>30</rank>
 						</item>
 						<item id="testci_list">
@@ -143,7 +143,7 @@
 						<item id="org_id">
 							<rank>20</rank>
 						</item>
-						<item id="location">
+						<item id="location_id">
 							<rank>30</rank>
 						</item>
 					</items>
@@ -156,7 +156,7 @@
 						<item id="org_id">
 							<rank>20</rank>
 						</item>
-						<item id="location">
+						<item id="location_id">
 							<rank>30</rank>
 						</item>
 					</items>
@@ -194,7 +194,7 @@
 			</properties>
 			<fields>
 				<field id="testci_id" xsi:type="AttributeExternalKey">
-					<filter><![CDATA[SELECT TestCI WHERE location = :this->testchildci_location]]></filter>
+					<filter><![CDATA[SELECT TestCI WHERE location_id = :this->testchildci_location]]></filter>
 					<dependencies>
 						<attribute id="testchildci_location"/>
 					</dependencies>
@@ -219,7 +219,7 @@
 				</field>
 				<field id="testchildci_location" xsi:type="AttributeExternalField">
 					<extkey_attcode>testchildci_id</extkey_attcode>
-					<target_attcode>location</target_attcode>
+					<target_attcode>location_id</target_attcode>
 				</field>
 			</fields>
 			<presentation>
