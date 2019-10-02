@@ -32,7 +32,7 @@
 					<ext_key_to_me>testci_id</ext_key_to_me>
 					<count_min>0</count_min>
 					<count_max>0</count_max>
-					<!-- do I need that ? <ext_key_to_remote>testchildci_id</ext_key_to_remote> -->
+					<ext_key_to_remote>testchildci_id</ext_key_to_remote>
 					<duplicates/>
 				</field>
 			</fields>
@@ -114,7 +114,7 @@
 					<ext_key_to_me>testchildci_id</ext_key_to_me>
 					<count_min>0</count_min>
 					<count_max>0</count_max>
-					<!-- do I need that ? <ext_key_to_remote>testci_id</ext_key_to_remote> -->
+					<ext_key_to_remote>testci_id</ext_key_to_remote>
 					<duplicates/>
 				</field>
 			</fields>
