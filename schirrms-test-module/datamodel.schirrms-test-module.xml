@@ -263,6 +263,10 @@
 					</items>
 				</search>
 			</presentation>
+			<methods>
+			</methods>
+			<relations>
+			</relations>
 		</class>
 	</classes>
 	<menus>
