@@ -222,20 +222,47 @@
 					<target_attcode>location</target_attcode>
 				</field>
 			</fields>
-		<presentation>
-			<details>
-				<items>
-					<item id="testci_id">
-						<rank>10</rank>
-					</item>
-					<item id="testchildci_id">
-						<rank>20</rank>
-					</item>
-					<item id="testchildci_location">
-						<rank>30</rank>
-					</item>
-				</items>
-			</details>
+			<presentation>
+				<details>
+					<items>
+						<item id="testci_id">
+							<rank>10</rank>
+						</item>
+						<item id="testchildci_id">
+							<rank>20</rank>
+						</item>
+						<item id="testchildci_location">
+							<rank>30</rank>
+						</item>
+					</items>
+				</details>
+				<list>
+					<items>
+						<item id="testci_id">
+							<rank>10</rank>
+						</item>
+						<item id="testchildci_id">
+							<rank>20</rank>
+						</item>
+						<item id="testchildci_location">
+							<rank>30</rank>
+						</item>
+					</items>
+				</list>
+				<search>
+					<items>
+						<item id="testci_id">
+							<rank>10</rank>
+						</item>
+						<item id="testchildci_id">
+							<rank>20</rank>
+						</item>
+						<item id="testchildci_location">
+							<rank>30</rank>
+						</item>
+					</items>
+				</search>
+			</presentation>
 		</class>
 	</classes>
 	<menus>
@@ -260,7 +287,7 @@
 						</dashlets>
 					</cell>
 				</cells>
-			</definitions>
+			</definition>
 		</menu>
 	</menus>
 	<user_rights>
