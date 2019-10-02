@@ -1,15 +1,272 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <itop_design xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.5">
-  <constants>
-  </constants>
-  <classes>
-  </classes>
-  <menus>
-  </menus>
-  <user_rights>
-    <groups>
-    </groups>
-    <profiles>
-    </profiles>
-  </user_rights>
+	<constants>
+	</constants>
+	<classes>
+		<!-- This class create a generic test CI -->
+		<class id="TestCI" _delta="define">
+			<parent>PhysicalDevice</parent>
+			<properties>
+				<category>bizmodel,searchable</category>
+				<abstract>false</abstract>
+				<key_type>autoincrement</key_type>
+				<db_table>testci</db_table>
+				<db_key_field>id</db_key_field>
+				<db_final_class_field/>
+				<naming>
+					<attributes>
+						<attribute id="name"/>
+					</attributes>
+				</naming>
+				<display_template/>
+				<icon></icon>
+				<reconciliation>
+					<attributes>
+						<attribute id="name"/>
+					</attributes>
+				</reconciliation>
+			</properties>
+			<fields>
+				<field id="testchildci_list" xsi:type="AttributeLinkedSetIndirect">
+					<linked_class>lnkTestCIToTestChildCI</linked_class>
+					<ext_key_to_me>testci_id</ext_key_to_me>
+					<count_min>0</count_min>
+					<count_max>0</count_max>
+					<!-- do I need that ? <ext_key_to_remote>testchildci_id</ext_key_to_remote> -->
+					<duplicates/>
+				</field>
+			</fields>
+			<presentation>
+				<details>
+					<items>
+						<item id="name">
+							<rank>10</rank>
+						</item>
+						<item id="org_id">
+							<rank>20</rank>
+						</item>
+						<item id="location">
+							<rank>30</rank>
+						</item>
+						<item id="testchildci_list">
+							<rank>100</rank>
+						</item>
+					</items>
+				</details>
+				<search>
+					<items>
+						<item id="name">
+							<rank>10</rank>
+						</item>
+						<item id="org_id">
+							<rank>20</rank>
+						</item>
+						<item id="location">
+							<rank>30</rank>
+						</item>
+					</items>
+				</search>
+				<list>
+					<items>
+						<item id="name">
+							<rank>10</rank>
+						</item>
+						<item id="org_id">
+							<rank>20</rank>
+						</item>
+						<item id="location">
+							<rank>30</rank>
+						</item>
+					</items>
+				</list>
+			</presentation>
+			<methods>
+			</methods>
+			<relations>
+			</relations>
+		</class>
+		<!-- This class create a generic child test CI, who is child of TestCI -->
+		<class id="TestChildCI" _delta="define">
+			<parent>TestCI</parent>
+			<properties>
+				<category>bizmodel,searchable</category>
+				<abstract>false</abstract>
+				<key_type>autoincrement</key_type>
+				<db_table>testchildci</db_table>
+				<db_key_field>id</db_key_field>
+				<db_final_class_field/>
+				<naming>
+					<attributes>
+						<attribute id="name"/>
+					</attributes>
+				</naming>
+				<display_template/>
+				<icon></icon>
+				<reconciliation>
+					<attributes>
+						<attribute id="name"/>
+					</attributes>
+				</reconciliation>
+			</properties>
+			<fields>
+				<field id="testci_list" xsi:type="AttributeLinkedSetIndirect">
+					<linked_class>lnkTestCIToTestChildCI</linked_class>
+					<ext_key_to_me>testchildci_id</ext_key_to_me>
+					<count_min>0</count_min>
+					<count_max>0</count_max>
+					<!-- do I need that ? <ext_key_to_remote>testci_id</ext_key_to_remote> -->
+					<duplicates/>
+				</field>
+			</fields>
+			<presentation>
+				<details>
+					<items>
+						<item id="name">
+							<rank>10</rank>
+						</item>
+						<item id="org_id">
+							<rank>20</rank>
+						</item>
+						<item id="location">
+							<rank>30</rank>
+						</item>
+						<item id="testci_list">
+							<rank>100</rank>
+						</item>
+					</items>
+				</details>
+				<search>
+					<items>
+						<item id="name">
+							<rank>10</rank>
+						</item>
+						<item id="org_id">
+							<rank>20</rank>
+						</item>
+						<item id="location">
+							<rank>30</rank>
+						</item>
+					</items>
+				</search>
+				<list>
+					<items>
+						<item id="name">
+							<rank>10</rank>
+						</item>
+						<item id="org_id">
+							<rank>20</rank>
+						</item>
+						<item id="location">
+							<rank>30</rank>
+						</item>
+					</items>
+				</list>
+			</presentation>
+			<methods>
+			</methods>
+			<relations>
+			</relations>
+		</class>
+		<!-- many to may link between TestCI and TestChildCI needs an lnk type class -->
+		<class id="lnkTestCIToTestChildCI" _delta="define">
+			<parent>cmdbAbstractObject</parent>
+			<properties>
+				<is_link>1</is_link>
+				<category>bizmodel</category>
+				<abstract>false</abstract>
+				<key_type>autoincrement</key_type>
+				<db_table>lnktestcitotestchildci</db_table>
+				<db_key_field>id</db_key_field>
+				<db_final_class_field/>
+				<naming>
+					<attributes>
+						<attribute id="testci_id"/>
+						<attribute id="testchildci_id"/>
+					</attributes>
+				</naming>
+				<display_template/>
+				<reconciliation>
+					<attributes>
+						<attribute id="testci_id"/>
+						<attribute id="testchildci_id"/>
+					</attributes>
+				</reconciliation>
+			</properties>
+			<fields>
+				<field id="testci_id" xsi:type="AttributeExternalKey">
+					<filter><![CDATA[SELECT TestCI WHERE location = :this->testchildci_location]]></filter>
+					<dependencies>
+						<attribute id="testchildci_location"/>
+					</dependencies>
+					<sql>testci_id</sql>
+					<target_class>TestCI</target_class>
+					<is_null_allowed>false</is_null_allowed>
+					<on_target_delete>DEL_AUTO</on_target_delete>
+				</field>
+				<field id="testci_name" xsi:type="AttributeExternalField">
+					<extkey_attcode>testci_id</extkey_attcode>
+					<target_attcode>name</target_attcode>
+				</field>
+				<field id="testchildci_id" xsi:type="AttributeExternalKey">
+					<sql>testchildci_id</sql>
+					<target_class>TestChildCI</target_class>
+					<is_null_allowed>false</is_null_allowed>
+					<on_target_delete>DEL_AUTO</on_target_delete>
+				</field>
+				<field id="testchildci_name" xsi:type="AttributeExternalField">
+					<extkey_attcode>testchildci_id</extkey_attcode>
+					<target_attcode>name</target_attcode>
+				</field>
+				<field id="testchildci_location" xsi:type="AttributeExternalField">
+					<extkey_attcode>testchildci_id</extkey_attcode>
+					<target_attcode>location</target_attcode>
+				</field>
+			</fields>
+		<presentation>
+			<details>
+				<items>
+					<item id="testci_id">
+						<rank>10</rank>
+					</item>
+					<item id="testchildci_id">
+						<rank>20</rank>
+					</item>
+					<item id="testchildci_location">
+						<rank>30</rank>
+					</item>
+				</items>
+			</details>
+		</class>
+	</classes>
+	<menus>
+		<menu id="ConfigManagementOverview" xsi:type="DashboardMenuNode" _delta="must_exist">
+			<rank>1</rank>
+			<parent>ConfigManagement</parent>
+			<definition>
+				<layout>DashboardLayoutOneCol</layout>
+				<title/>
+				<cells>
+					<cell id="0" _delta="must_exist">
+						<rank>0</rank>
+						<dashlets>
+							<dashlet id="98" xsi:type="DashletBadge" _delta="define">
+								<rank>5</rank>
+								<class>TestCI</class>
+							</dashlet>
+							<dashlet id="99" xsi:type="DashletBadge" _delta="define">
+								<rank>6</rank>
+								<class>TestChildCI</class>
+							</dashlet>
+						</dashlets>
+					</cell>
+				</cells>
+			</definitions>
+		</menu>
+	</menus>
+	<user_rights>
+		<groups>
+		</groups>
+		<profiles>
+		</profiles>
+	</user_rights>
 </itop_design>
