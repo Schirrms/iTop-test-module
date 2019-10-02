@@ -202,16 +202,26 @@
 					<target_class>TestCI</target_class>
 					<is_null_allowed>false</is_null_allowed>
 					<on_target_delete>DEL_AUTO</on_target_delete>
+					<allow_target_creation>true</allow_target_creation>
 				</field>
 				<field id="testci_name" xsi:type="AttributeExternalField">
 					<extkey_attcode>testci_id</extkey_attcode>
 					<target_attcode>name</target_attcode>
 				</field>
+				<field id="testci_location" xsi:type="AttributeExternalField">
+					<extkey_attcode>testci_id</extkey_attcode>
+					<target_attcode>location_id</target_attcode>
+				</field>
 				<field id="testchildci_id" xsi:type="AttributeExternalKey">
+					<filter><![CDATA[SELECT TestChildCI WHERE location_id = :this->testci_location]]></filter>
+					<dependencies>
+						<attribute id="testci_location"/>
+					</dependencies>
 					<sql>testchildci_id</sql>
 					<target_class>TestChildCI</target_class>
 					<is_null_allowed>false</is_null_allowed>
 					<on_target_delete>DEL_AUTO</on_target_delete>
+					<allow_target_creation>true</allow_target_creation>
 				</field>
 				<field id="testchildci_name" xsi:type="AttributeExternalField">
 					<extkey_attcode>testchildci_id</extkey_attcode>
@@ -228,11 +238,14 @@
 						<item id="testci_id">
 							<rank>10</rank>
 						</item>
-						<item id="testchildci_id">
+						<item id="testci_location">
 							<rank>20</rank>
 						</item>
-						<item id="testchildci_location">
+						<item id="testchildci_id">
 							<rank>30</rank>
+						</item>
+						<item id="testchildci_location">
+							<rank>40</rank>
 						</item>
 					</items>
 				</details>
@@ -241,11 +254,14 @@
 						<item id="testci_id">
 							<rank>10</rank>
 						</item>
-						<item id="testchildci_id">
+						<item id="testci_location">
 							<rank>20</rank>
 						</item>
-						<item id="testchildci_location">
+						<item id="testchildci_id">
 							<rank>30</rank>
+						</item>
+						<item id="testchildci_location">
+							<rank>40</rank>
 						</item>
 					</items>
 				</list>
@@ -254,11 +270,14 @@
 						<item id="testci_id">
 							<rank>10</rank>
 						</item>
-						<item id="testchildci_id">
+						<item id="testci_location">
 							<rank>20</rank>
 						</item>
-						<item id="testchildci_location">
+						<item id="testchildci_id">
 							<rank>30</rank>
+						</item>
+						<item id="testchildci_location">
+							<rank>40</rank>
 						</item>
 					</items>
 				</search>
