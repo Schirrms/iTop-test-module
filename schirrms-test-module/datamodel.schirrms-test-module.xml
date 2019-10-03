@@ -120,11 +120,20 @@
 			</fields>
 			<methods>
 				<method id="PrefillSearchForm">
+					<static>false</static>
+					<access>public</access>
+					<type>Overload-DBObject</type>
+					<arguments>
+						<argument id="1">
+							<type>reference</type>
+							<mandatory>true</mandatory>
+						</argument>
+					</arguments>
 					<code><![CDATA[
 						public function PrefillSearchForm(&$aContextParam)
 						{
 							print var_dump($aContextParam);
-              print 1/0;
+							print 1/0;
 							if($aContextParam['dest_class'] == 'lnkTestCIToTestChildCI' || is_subclass_of($aContextParam['dest_class'], 'lnkTestCIToTestChildCI'))
 							{
 								if(MetaModel::IsValidAttCode($aContextParam['dest_class'],'testci_location') && !empty($aContextParam['source_obj']->Get('location_id')))
@@ -252,11 +261,20 @@
 			</fields>
 			<methods>
 				<method id="PrefillSearchForm">
+					<static>false</static>
+					<access>public</access>
+					<type>Overload-DBObject</type>
+					<arguments>
+						<argument id="1">
+							<type>reference</type>
+							<mandatory>true</mandatory>
+						</argument>
+					</arguments>
 					<code><![CDATA[
 						public function PrefillSearchForm(&$aContextParam)
 						{
 							print var_dump($aContextParam);
-              print 2/0;
+							print 2/0;
 							if($aContextParam['dest_class'] == 'lnkTestCIToTestChildCI' || is_subclass_of($aContextParam['dest_class'], 'lnkTestCIToTestChildCI'))
 							{
 								if(MetaModel::IsValidAttCode($aContextParam['dest_class'],'testci_location') && !empty($aContextParam['source_obj']->Get('location_id')))
