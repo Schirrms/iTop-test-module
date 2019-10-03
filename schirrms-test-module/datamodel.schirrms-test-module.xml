@@ -37,6 +37,33 @@
 				</field>
 			</fields>
 			<methods>
+				<method id="PrefillSearchForm" _delta="define">
+					<static>false</static>
+					<access>public</access>
+					<type>Overload-DBObject</type>
+					<arguments>
+						<argument id="1">
+							<type>reference</type>
+							<mandatory>true</mandatory>
+						</argument>
+					</arguments>
+					<code><![CDATA[
+						public function PrefillSearchForm(&$aContextParam)
+						{
+							print "in the TestCI Class<br>";
+							print var_dump($aContextParam);
+							print 3/0;
+							if($aContextParam['dest_class'] == 'lnkTestCIToTestChildCI' || is_subclass_of($aContextParam['dest_class'], 'lnkTestCIToTestChildCI'))
+							{
+								if(MetaModel::IsValidAttCode($aContextParam['dest_class'],'testci_location') && !empty($aContextParam['source_obj']->Get('location_id')))
+								{
+									$aContextParam['filter']->ResetCondition();
+									$aContextParam['filter']->AddCondition('testci_location', $aContextParam['source_obj']->Get('location_id'));
+								}
+							}
+						}
+					]]></code>
+				</method>
 			</methods>
 			<presentation>
 				<details>
@@ -119,7 +146,7 @@
 				</field>
 			</fields>
 			<methods>
-				<method id="PrefillSearchForm">
+				<method id="PrefillSearchForm" _delta="define">
 					<static>false</static>
 					<access>public</access>
 					<type>Overload-DBObject</type>
@@ -132,6 +159,7 @@
 					<code><![CDATA[
 						public function PrefillSearchForm(&$aContextParam)
 						{
+							print "In the TestChildClass<br>";
 							print var_dump($aContextParam);
 							print 1/0;
 							if($aContextParam['dest_class'] == 'lnkTestCIToTestChildCI' || is_subclass_of($aContextParam['dest_class'], 'lnkTestCIToTestChildCI'))
@@ -260,7 +288,7 @@
 				</field>
 			</fields>
 			<methods>
-				<method id="PrefillSearchForm">
+				<method id="PrefillSearchForm" _delta="define">
 					<static>false</static>
 					<access>public</access>
 					<type>Overload-DBObject</type>
@@ -273,6 +301,7 @@
 					<code><![CDATA[
 						public function PrefillSearchForm(&$aContextParam)
 						{
+							print "in the lnk Class<br>";
 							print var_dump($aContextParam);
 							print 2/0;
 							if($aContextParam['dest_class'] == 'lnkTestCIToTestChildCI' || is_subclass_of($aContextParam['dest_class'], 'lnkTestCIToTestChildCI'))
