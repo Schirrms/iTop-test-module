@@ -27,6 +27,9 @@
 				</reconciliation>
 			</properties>
 			<fields>
+				<field id="location_id" _delta="must_exist">
+					<is_null_allowed _delta="redefine">false</is_null_allowed>
+				</field>
 				<field id="testchildci_list" xsi:type="AttributeLinkedSetIndirect">
 					<linked_class>lnkTestCIToTestChildCI</linked_class>
 					<ext_key_to_me>testci_id</ext_key_to_me>
@@ -41,8 +44,8 @@
 					<code><![CDATA[
 						public function PrefillSearchForm(&$aContextParam)
 						{
-							file_put_contents('/tmp/dd.txt', "in the TestCI Class\n");
-							file_put_contents('/tmp/dd.txt', print_r($aContextParam, true), FILE_APPEND);
+							// file_put_contents('/tmp/dd.txt', "in the TestCI Class\n");
+							// file_put_contents('/tmp/dd.txt', print_r($aContextParam, true), FILE_APPEND);
 							if($aContextParam['dest_class'] == 'TestChildCI')
 							{
 								if(MetaModel::IsValidAttCode($aContextParam['dest_class'],'location_id') && !empty($aContextParam['source_obj']->Get('location_id')))
@@ -126,6 +129,9 @@
 				</reconciliation>
 			</properties>
 			<fields>
+				<field id="location_id" _delta="must_exist">
+					<is_null_allowed _delta="redefine">false</is_null_allowed>
+				</field>
 				<field id="testci_list" xsi:type="AttributeLinkedSetIndirect">
 					<linked_class>lnkTestCIToTestChildCI</linked_class>
 					<ext_key_to_me>testchildci_id</ext_key_to_me>
@@ -140,8 +146,8 @@
 					<code><![CDATA[
 						public function PrefillSearchForm(&$aContextParam)
 						{
-							file_put_contents('/tmp/dd.txt', "in the TestChildCI Class\n");
-							file_put_contents('/tmp/dd.txt', print_r($aContextParam, true), FILE_APPEND);
+							//file_put_contents('/tmp/dd.txt', "in the TestChildCI Class\n");
+							//file_put_contents('/tmp/dd.txt', print_r($aContextParam, true), FILE_APPEND);
 							if($aContextParam['dest_class'] == 'TestCI')
 							{
 								if(MetaModel::IsValidAttCode($aContextParam['dest_class'],'location_id') && !empty($aContextParam['source_obj']->Get('location_id')))
