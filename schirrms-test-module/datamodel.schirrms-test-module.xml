@@ -238,12 +238,13 @@
 					<code><![CDATA[
 						public function PrefillSearchForm(&$aContextParam)
 						{
-							if($aContextParam['dest_class'] == 'TestCI' || is_subclass_of($aContextParam['dest_class'], 'TestCI'))
+							print var_dump($aContextParam);
+							if($aContextParam['dest_class'] == 'lnkTestCIToTestChildCI' || is_subclass_of($aContextParam['dest_class'], 'lnkTestCIToTestChildCI'))
 							{
-								if(MetaModel::IsValidAttCode($aContextParam['dest_class'],'location_id') && !empty($aContextParam['source_obj']->Get('location_id')))
+								if(MetaModel::IsValidAttCode($aContextParam['dest_class'],'testci_location') && !empty($aContextParam['source_obj']->Get('location_id')))
 								{
 									$aContextParam['filter']->ResetCondition();
-									$aContextParam['filter']->AddCondition('location_id', $aContextParam['source_obj']->Get('location_id'));
+									$aContextParam['filter']->AddCondition('testci_location', $aContextParam['source_obj']->Get('location_id'));
 								}
 							}
 						}
