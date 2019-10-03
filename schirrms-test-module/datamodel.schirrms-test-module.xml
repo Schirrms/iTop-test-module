@@ -36,6 +36,8 @@
 					<duplicates/>
 				</field>
 			</fields>
+			<methods>
+			</methods>
 			<presentation>
 				<details>
 					<items>
@@ -80,8 +82,6 @@
 					</items>
 				</list>
 			</presentation>
-			<methods>
-			</methods>
 			<relations>
 			</relations>
 		</class>
@@ -118,6 +118,24 @@
 					<duplicates/>
 				</field>
 			</fields>
+			<methods>
+				<method id="PrefillSearchForm">
+					<code><![CDATA[
+						public function PrefillSearchForm(&$aContextParam)
+						{
+							print var_dump($aContextParam);
+							if($aContextParam['dest_class'] == 'lnkTestCIToTestChildCI' || is_subclass_of($aContextParam['dest_class'], 'lnkTestCIToTestChildCI'))
+							{
+								if(MetaModel::IsValidAttCode($aContextParam['dest_class'],'testci_location') && !empty($aContextParam['source_obj']->Get('location_id')))
+								{
+									$aContextParam['filter']->ResetCondition();
+									$aContextParam['filter']->AddCondition('testci_location', $aContextParam['source_obj']->Get('location_id'));
+								}
+							}
+						}
+					]]></code>
+				</method>
+			</methods>
 			<presentation>
 				<details>
 					<items>
@@ -162,8 +180,6 @@
 					</items>
 				</list>
 			</presentation>
-			<methods>
-			</methods>
 			<relations>
 			</relations>
 		</class>
