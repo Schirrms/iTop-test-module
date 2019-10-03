@@ -37,31 +37,22 @@
 				</field>
 			</fields>
 			<methods>
-				<method id="PrefillSearchForm" _delta="define">
-					<static>false</static>
-					<access>public</access>
-					<type>Overload-DBObject</type>
-					<arguments>
-						<argument id="1">
-							<type>reference</type>
-							<mandatory>true</mandatory>
-						</argument>
-					</arguments>
+				<method id="PrefillSearchForm">
 					<code><![CDATA[
 						public function PrefillSearchForm(&$aContextParam)
 						{
-							file_put_contents('/tmp/dd.txt', 'in the TestCI Class\n', FILE_APPEND);
-							file_put_contents('/tmp/dd.txt', var_dump($aContextParam), FILE_APPEND);
-							if($aContextParam['dest_class'] == 'lnkTestCIToTestChildCI' || is_subclass_of($aContextParam['dest_class'], 'lnkTestCIToTestChildCI'))
+							file_put_contents('/tmp/dd.txt', "in the TestCI Class\n");
+							file_put_contents('/tmp/dd.txt', print_r($aContextParam, true), FILE_APPEND);
+							if($aContextParam['dest_class'] == 'TestChildCI')
 							{
-								if(MetaModel::IsValidAttCode($aContextParam['dest_class'],'testci_location') && !empty($aContextParam['source_obj']->Get('location_id')))
+								if(MetaModel::IsValidAttCode($aContextParam['dest_class'],'location_id') && !empty($aContextParam['source_obj']->Get('location_id')))
 								{
 									$aContextParam['filter']->ResetCondition();
-									$aContextParam['filter']->AddCondition('testci_location', $aContextParam['source_obj']->Get('location_id'));
+									$aContextParam['filter']->AddCondition('location_id', $aContextParam['source_obj']->Get('location_id'));
 								}
 							}
-						}
-					]]></code>
+						}]]>
+					</code>
 				</method>
 			</methods>
 			<presentation>
@@ -145,22 +136,12 @@
 				</field>
 			</fields>
 			<methods>
-				<method id="PrefillSearchForm" _delta="define">
-					<static>false</static>
-					<access>public</access>
-					<type>Overload-DBObject</type>
-					<arguments>
-						<argument id="1">
-							<type>reference</type>
-							<mandatory>true</mandatory>
-						</argument>
-					</arguments>
+				<method id="PrefillSearchForm">
 					<code><![CDATA[
 						public function PrefillSearchForm(&$aContextParam)
 						{
-							file_put_contents('/tmp/dd.txt', "in the TestChildCI Class\n", FILE_APPEND);
-							$ddebug = print_r($aContextParam, true);
-							file_put_contents('/tmp/dd.txt', $ddebug, FILE_APPEND);
+							file_put_contents('/tmp/dd.txt', "in the TestChildCI Class\n");
+							file_put_contents('/tmp/dd.txt', print_r($aContextParam, true), FILE_APPEND);
 							if($aContextParam['dest_class'] == 'TestCI')
 							{
 								if(MetaModel::IsValidAttCode($aContextParam['dest_class'],'location_id') && !empty($aContextParam['source_obj']->Get('location_id')))
@@ -169,8 +150,8 @@
 									$aContextParam['filter']->AddCondition('location_id', $aContextParam['source_obj']->Get('location_id'));
 								}
 							}
-						}
-					]]></code>
+						}]]>
+					</code>
 				</method>
 			</methods>
 			<presentation>
@@ -248,7 +229,6 @@
 			</properties>
 			<fields>
 				<field id="testci_id" xsi:type="AttributeExternalKey">
-					<filter><![CDATA[SELECT TestCI WHERE location_id= :this->testchildci_location]]></filter>
 					<dependencies>
 						<attribute id="testchildci_location"/>
 					</dependencies>
@@ -267,7 +247,6 @@
 					<target_attcode>location_id</target_attcode>
 				</field>
 				<field id="testchildci_id" xsi:type="AttributeExternalKey">
-					<filter><![CDATA[SELECT TestChildCI WHERE location_id= :this->testci_location]]></filter>
 					<dependencies>
 						<attribute id="testci_location"/>
 					</dependencies>
@@ -287,32 +266,6 @@
 				</field>
 			</fields>
 			<methods>
-				<method id="PrefillSearchForm" _delta="define">
-					<static>false</static>
-					<access>public</access>
-					<type>Overload-DBObject</type>
-					<arguments>
-						<argument id="1">
-							<type>reference</type>
-							<mandatory>true</mandatory>
-						</argument>
-					</arguments>
-					<code><![CDATA[
-						public function PrefillSearchForm(&$aContextParam)
-						{
-							file_put_contents('/tmp/dd.txt', 'in the lnk Class\n', FILE_APPEND);
-							file_put_contents('/tmp/dd.txt', var_dump($aContextParam), FILE_APPEND);
-							if($aContextParam['dest_class'] == 'lnkTestCIToTestChildCI' || is_subclass_of($aContextParam['dest_class'], 'lnkTestCIToTestChildCI'))
-							{
-								if(MetaModel::IsValidAttCode($aContextParam['dest_class'],'testci_location') && !empty($aContextParam['source_obj']->Get('location_id')))
-								{
-									$aContextParam['filter']->ResetCondition();
-									$aContextParam['filter']->AddCondition('testci_location', $aContextParam['source_obj']->Get('location_id'));
-								}
-							}
-						}
-					]]></code>
-				</method>
 			</methods>
 			<presentation>
 				<details>
