@@ -233,6 +233,23 @@
 					<target_attcode>location_id</target_attcode>
 				</field>
 			</fields>
+			<methods>
+				<method id="PrefillSearchForm">
+					<code><![CDATA[
+						public function PrefillSearchForm(&$aContextParam)
+						{
+							if($aContextParam['dest_class'] == 'TestCI' || is_subclass_of($aContextParam['dest_class'], 'TestCI'))
+							{
+								if(MetaModel::IsValidAttCode($aContextParam['dest_class'],'location_id') && !empty($aContextParam['source_obj']->Get('location_id')))
+								{
+									$aContextParam['filter']->ResetCondition();
+									$aContextParam['filter']->AddCondition('location_id', $aContextParam['source_obj']->Get('location_id'));
+								}
+							}
+						}
+					]]></code>
+				</method>
+			</methods>
 			<presentation>
 				<details>
 					<items>
@@ -283,8 +300,6 @@
 					</items>
 				</search>
 			</presentation>
-			<methods>
-			</methods>
 			<relations>
 			</relations>
 		</class>
