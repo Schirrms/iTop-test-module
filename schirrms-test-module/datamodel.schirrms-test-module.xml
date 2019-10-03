@@ -158,15 +158,15 @@
 					<code><![CDATA[
 						public function PrefillSearchForm(&$aContextParam)
 						{
-							file_put_contents('/tmp/dd.txt', 'in the TestChildCI Class\n', FILE_APPEND);
+							file_put_contents('/tmp/dd.txt', "in the TestChildCI Class\n", FILE_APPEND);
 							$ddebug = print_r($aContextParam, true);
 							file_put_contents('/tmp/dd.txt', $ddebug, FILE_APPEND);
-							if($aContextParam['dest_class'] == 'lnkTestCIToTestChildCI' || is_subclass_of($aContextParam['dest_class'], 'lnkTestCIToTestChildCI'))
+							if($aContextParam['dest_class'] == 'TestCI')
 							{
-								if(MetaModel::IsValidAttCode($aContextParam['dest_class'],'testci_location') && !empty($aContextParam['source_obj']->Get('location_id')))
+								if(MetaModel::IsValidAttCode($aContextParam['dest_class'],'location_id') && !empty($aContextParam['source_obj']->Get('location_id')))
 								{
 									$aContextParam['filter']->ResetCondition();
-									$aContextParam['filter']->AddCondition('testci_location', $aContextParam['source_obj']->Get('location_id'));
+									$aContextParam['filter']->AddCondition('location_id', $aContextParam['source_obj']->Get('location_id'));
 								}
 							}
 						}
