@@ -124,6 +124,7 @@
 						public function PrefillSearchForm(&$aContextParam)
 						{
 							print var_dump($aContextParam);
+              print 1/0;
 							if($aContextParam['dest_class'] == 'lnkTestCIToTestChildCI' || is_subclass_of($aContextParam['dest_class'], 'lnkTestCIToTestChildCI'))
 							{
 								if(MetaModel::IsValidAttCode($aContextParam['dest_class'],'testci_location') && !empty($aContextParam['source_obj']->Get('location_id')))
@@ -255,6 +256,7 @@
 						public function PrefillSearchForm(&$aContextParam)
 						{
 							print var_dump($aContextParam);
+              print 2/0;
 							if($aContextParam['dest_class'] == 'lnkTestCIToTestChildCI' || is_subclass_of($aContextParam['dest_class'], 'lnkTestCIToTestChildCI'))
 							{
 								if(MetaModel::IsValidAttCode($aContextParam['dest_class'],'testci_location') && !empty($aContextParam['source_obj']->Get('location_id')))
