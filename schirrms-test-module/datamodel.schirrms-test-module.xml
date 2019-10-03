@@ -50,9 +50,8 @@
 					<code><![CDATA[
 						public function PrefillSearchForm(&$aContextParam)
 						{
-							print "in the TestCI Class<br>";
-							print var_dump($aContextParam);
-							print 3/0;
+							file_put_contents('/tmp/dd.txt, 'in the TestCI Class\n', FILE_APPEND);
+							file_put_contents('/tmp/dd.txt, var_dump($aContextParam));
 							if($aContextParam['dest_class'] == 'lnkTestCIToTestChildCI' || is_subclass_of($aContextParam['dest_class'], 'lnkTestCIToTestChildCI'))
 							{
 								if(MetaModel::IsValidAttCode($aContextParam['dest_class'],'testci_location') && !empty($aContextParam['source_obj']->Get('location_id')))
@@ -159,9 +158,8 @@
 					<code><![CDATA[
 						public function PrefillSearchForm(&$aContextParam)
 						{
-							print "In the TestChildClass<br>";
-							print var_dump($aContextParam);
-							print 1/0;
+							file_put_contents('/tmp/dd.txt, 'in the TestChildCI Class\n', FILE_APPEND);
+							file_put_contents('/tmp/dd.txt, var_dump($aContextParam));
 							if($aContextParam['dest_class'] == 'lnkTestCIToTestChildCI' || is_subclass_of($aContextParam['dest_class'], 'lnkTestCIToTestChildCI'))
 							{
 								if(MetaModel::IsValidAttCode($aContextParam['dest_class'],'testci_location') && !empty($aContextParam['source_obj']->Get('location_id')))
@@ -301,9 +299,8 @@
 					<code><![CDATA[
 						public function PrefillSearchForm(&$aContextParam)
 						{
-							print "in the lnk Class<br>";
-							print var_dump($aContextParam);
-							print 2/0;
+							file_put_contents('/tmp/dd.txt, 'in the lnk Class\n', FILE_APPEND);
+							file_put_contents('/tmp/dd.txt, var_dump($aContextParam));
 							if($aContextParam['dest_class'] == 'lnkTestCIToTestChildCI' || is_subclass_of($aContextParam['dest_class'], 'lnkTestCIToTestChildCI'))
 							{
 								if(MetaModel::IsValidAttCode($aContextParam['dest_class'],'testci_location') && !empty($aContextParam['source_obj']->Get('location_id')))
