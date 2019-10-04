@@ -101,6 +101,13 @@
 				</list>
 			</presentation>
 			<relations>
+				<relation id="impacts">
+					<neighbours>
+						<neighbour id="ChildCI"> <!-- A key  that is the link with the neighbour_id in the Child AttributeRedundancySettings -->
+							<attribute>testchildci_list</attribute> <!-- local key (direct/indirect) to the childCI -->
+						</neighbour>
+					</neighbours>
+				</relation>
 			</relations>
 		</class>
 		<!-- This class create a generic child test CI, who is child of TestCI -->
@@ -134,6 +141,18 @@
 					<count_max>0</count_max>
 					<ext_key_to_remote>testci_id</ext_key_to_remote>
 					<duplicates/>
+				</field>
+				<!-- link to the parent CI -->
+				<field id="redundancy" xsi:type="AttributeRedundancySettings">
+					<sql>redundancy</sql>
+					<relation_code>impacts</relation_code>
+					<from_class>TestCI</from_class>
+					<neighbour_id>ChildCI</neighbour_id>
+					<enabled>true</enabled>
+					<enabled_mode>user</enabled_mode>
+					<min_up>1</min_up>
+					<min_up_type>count</min_up_type>
+					<min_up_mode>user</min_up_mode>
 				</field>
 			</fields>
 			<methods>
