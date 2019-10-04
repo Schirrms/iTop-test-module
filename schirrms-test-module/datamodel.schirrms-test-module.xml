@@ -49,6 +49,7 @@
 								{
 									$aContextParam['filter']->ResetCondition();
 									$aContextParam['filter']->AddCondition('location_id', $aContextParam['source_obj']->Get('location_id'));
+									$aContextParam['filter']->AddCondition('id',$aContextParam['source_obj']->GetKey(), '!=');
 								}
 							}
 						}]]>
@@ -148,6 +149,7 @@
 								{
 									$aContextParam['filter']->ResetCondition();
 									$aContextParam['filter']->AddCondition('location_id', $aContextParam['source_obj']->Get('location_id'));
+									$aContextParam['filter']->AddCondition('id',$aContextParam['source_obj']->GetKey(), '!=');
 								}
 							}
 						}]]>
