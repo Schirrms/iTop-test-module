@@ -328,11 +328,11 @@
 					<cell id="0" _delta="must_exist">
 						<rank>0</rank>
 						<dashlets>
-							<dashlet id="98" xsi:type="DashletBadge" _delta="define">
+							<dashlet id="998" xsi:type="DashletBadge" _delta="define">
 								<rank>5</rank>
 								<class>TestCI</class>
 							</dashlet>
-							<dashlet id="99" xsi:type="DashletBadge" _delta="define">
+							<dashlet id="999" xsi:type="DashletBadge" _delta="define">
 								<rank>6</rank>
 								<class>TestChildCI</class>
 							</dashlet>
